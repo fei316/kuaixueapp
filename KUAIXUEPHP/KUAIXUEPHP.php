@@ -5,7 +5,7 @@ final class KUAIXUEPHP
         self::_set_const();
         self::_create_dir();
         self::_import_file();
-//        Application::run();
+        Application::run();
     }
 
     private static function _set_const() {
@@ -45,10 +45,17 @@ final class KUAIXUEPHP
         }
     }
 
+    /**
+     * 载入框架所需文件
+     */
     private static function _import_file() {
         $fileArr = array(
-
+            FUNCTION_PATH . '/function.php',
+            CORE_PATH . '/Application.class.php',
         );
+        foreach ($fileArr as $v) {
+            require_once $v;
+        }
     }
 }
 
