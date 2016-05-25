@@ -29,7 +29,8 @@ final class Application
 class IndexController extends Controller
 {
     public function index(){
-        echo 'OK';
+        header('Content-type:text/html;charset=utf-8');
+        echo '<h2>欢迎使用KUAIXUEPHP框架</h2>';
     }
 }
 str;
