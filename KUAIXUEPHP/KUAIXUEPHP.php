@@ -51,6 +51,7 @@ final class KUAIXUEPHP
     private static function _import_file() {
         $fileArr = array(
             FUNCTION_PATH . '/function.php',
+            CORE_PATH . '/Controller.class.php',
             CORE_PATH . '/Application.class.php',
         );
         foreach ($fileArr as $v) {

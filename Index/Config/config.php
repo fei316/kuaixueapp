@@ -1,4 +1,4 @@
 <?php
 return array(
-    'CODE_LEN'  => 5
+    //配置项 => 配置值
 );
