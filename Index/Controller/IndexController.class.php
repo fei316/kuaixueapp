@@ -2,6 +2,7 @@
 class IndexController extends Controller
 {
     public function index(){
-        echo 'OK';
+        //$this->success('成功');
+        $this->error('失败');
     }
 }

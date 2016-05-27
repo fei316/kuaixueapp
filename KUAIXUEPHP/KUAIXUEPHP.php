@@ -43,6 +43,9 @@ final class KUAIXUEPHP
         foreach ($arr as $v) {
             is_dir($v) || mkdir($v, 0777, true);
         }
+
+        is_file(APP_TPL_PATH . '/success.html') || copy(DATA_PATH . '/Tpl/success.html', APP_TPL_PATH . '/success.html');
+        is_file(APP_TPL_PATH . '/error.html') || copy(DATA_PATH . '/Tpl/error.html', APP_TPL_PATH . '/error.html');
     }
 
     /**
