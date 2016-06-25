@@ -63,3 +63,7 @@
 [TIME]: 2016-06-25 16:58:59 ERROR: 出错了
 [TIME]: 2016-06-25 16:59:56 ERROR: 出错了
 [TIME]: 2016-06-25 17:16:25 ERROR: D:/wamp/www/kuaixueapp/Index/Tpl/Index/index.php模板文件不存在
+[TIME]: 2016-06-25 18:47:57 ERROR: D:/wamp/www/kuaixueapp/Admin/Controller/loginController.class.php控制器未找到
+[TIME]: 2016-06-25 18:48:34 ERROR: D:/wamp/www/kuaixueapp/Admin/Controller/loginController.class.php控制器未找到
+[TIME]: 2016-06-25 18:49:04 ERROR: D:/wamp/www/kuaixueapp/Admin/Controller/loginController.class.php控制器未找到
+[TIME]: 2016-06-25 18:57:16 ERROR: indexController控制器中indexes方法不存在

@@ -192,9 +192,22 @@ function print_const(){
         define('CONTROLLER', $c);
         define('ACTION', $a);
         $c .= "Controller";
+        if (class_exists($c)) {
+            $obj = new $c();
+            if (!method_exists($obj, $a)) {
+                if (method_exists($obj, '__empty')) {
+                    $obj->__empty();
+                } else {
+                    halt($c . '控制器中' . $a . '方法不存在');
+                }
+            } else {
+                $obj->$a();
+            }
+        } else {
+            $obj = new EmptyController();
+            $obj->index();
+        }
 
-        $obj = new $c();
-        $obj->$a();
     }
 
     /**
@@ -226,7 +239,15 @@ str;
             //controller
             case strlen($className) > 10 && substr($className, -10) == 'Controller' :
                 $path = APP_CONTROLLER_PATH . '/' . $className . '.class.php';
-                if (!is_file($path)) halt($path . '控制器未找到');
+                if (!is_file($path)) {
+                    $emptyPath = APP_CONTROLLER_PATH . '/EmptyController.class.php';
+                    if (is_file($emptyPath)) {
+                        include $emptyPath;
+                        return;
+                    } else {
+                        halt($path . '控制器未找到');
+                    }
+                }
                 include $path;
             break;
 
@@ -235,7 +256,6 @@ str;
                 if (!is_file($path)) halt($path . '类未找到');
                 include $path;
             break;
-
         }
 
     }
