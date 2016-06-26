@@ -21,4 +21,20 @@ return array(
 
     //自动加载Common/Lib目录下的文件
     'AUTO_LOAD_FILE'    => array('func.php'),
+
+    //数据库配置
+    'DB_CHARSET'    => 'utf8',
+    'DB_HOST'       => '127.0.0.1',
+    'DB_PORT'       => 3306,
+    'DB_USER'       => 'root',
+    'DB_PASSWORD'   => '',
+    'DB_DATABASE'   => '',
+    'DB_PREFIX'     => '',
+
+    //smarty配置
+    'SMARTY_ON'         => true,
+    'LEFT_DELIMITER'    => '{kx',
+    'RIGHT_DELIMITER'   => '}',
+    'CACHE_ON'          => false,
+    'CACHE_TIME'        => 60
 );

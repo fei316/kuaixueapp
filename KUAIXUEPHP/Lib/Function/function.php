@@ -106,6 +106,16 @@ function print_const(){
     p($const['user']);
 }
 
+function M($table){
+    $obj = new Model($table);
+    return $obj;
+}
+
+function K($model){
+    $model .= "Model";
+    return new $model;
+}
+
 
 
 

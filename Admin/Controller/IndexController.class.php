@@ -6,7 +6,9 @@ class IndexController extends Controller
     }
 
     public function index(){
-        $code = new Code();
-        echo $code->show();
+        //$code = new Code();
+        //echo $code->show();
+        $this->assign('var', 'dddddddd');
+        $this->display();
     }
 }

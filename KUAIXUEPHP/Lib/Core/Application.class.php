@@ -3,11 +3,40 @@ final class Application
 {
     public static function run() {
         self::_init();
+        set_error_handler(array(__CLASS__, 'error'));
+        register_shutdown_function(array(__CLASS__, 'fatal_error'));
         self::_user_import();
         self::_set_url();
         spl_autoload_register(array(__CLASS__, '_autoload'));
         self::_create_demo();
         self::_app_run();
+    }
+
+    public static function fatal_error(){
+         if ($e = error_get_last()) {
+             self::error($e['type'], $e['message'], $e['file'], $e['line']);
+         }
+    }
+
+    public static function error($errno, $error, $file, $line){
+        switch ($errno) {
+            case E_ERROR :
+            case E_PARSE :
+            case E_CORE_ERROR :
+            case E_COMPILE_ERROR :
+            case E_USER_ERROR :
+                $msg = $error . $file . " 第$line行";
+                halt($msg);
+                break;
+            case E_STRICT :
+            case E_USER_WARNING :
+            case E_USER_NOTICE :
+            default :
+                if (DEBUG) {
+                    include DATA_PATH . '/Tpl/notice.html';
+                }
+            break;
+        }
     }
 
     private static function _app_run() {
@@ -73,6 +102,11 @@ str;
                         halt($path . '控制器未找到');
                     }
                 }
+                include $path;
+            break;
+            //model
+            case strlen($className) > 5 && substr($className, -5) == 'Model' :
+                $path = COMMON_MODEL_PATH . '/' . $className . '.class.php';
                 include $path;
             break;
 

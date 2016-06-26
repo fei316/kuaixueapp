@@ -1,8 +1,9 @@
 <?php
-class Controller{
+class Controller extends SmartyView{
     private $var = array();
 
     public function __construct(){
+        if (C('SMARTY_ON')) parent::__construct();
         if (method_exists($this, '__init')) {
             $this->__init();
         }
@@ -12,10 +13,7 @@ class Controller{
         }
     }
 
-    /**
-     * @param null $tpl
-     */
-    protected function display($tpl=null){
+    protected function get_tpl($tpl){
         if (is_null($tpl)) {
             $path = APP_TPL_PATH . '/' . CONTROLLER . '/' . ACTION . '.html';
         } else {
@@ -23,14 +21,30 @@ class Controller{
             $tpl = empty($suffix) ? $tpl . '.html' : $tpl;
             $path = APP_TPL_PATH . '/' . CONTROLLER . '/' . $tpl;
         }
+        return $path;
+    }
 
+    /**
+     * @param null $tpl
+     */
+    protected function display($tpl=null){
+        $path = $this->get_tpl($tpl);
         if (!is_file($path)) halt($path . '模板文件不存在');
-        extract($this->var);
-        include $path;
+        if (C('SMARTY_ON')) {
+            parent::display($path);
+        } else {
+            extract($this->var);
+            include $path;
+        }
     }
 
     protected function assign($var, $value){
-        $this->var[$var] = $value;
+        if (C('SMARTY_ON')) {
+            parent::assign($var, $value);
+        } else {
+            $this->var[$var] = $value;
+        }
+
     }
 
     /**

@@ -1,0 +1,8 @@
+[TIME]: 2016-06-26 12:29:22 ERROR: syntax error, unexpected '}'D:\wamp\www\kuaixueapp\Admin\Controller\IndexController.class.php 第
+[TIME]: 2016-06-26 12:48:50 ERROR: 请先配置数据库
+[TIME]: 2016-06-26 13:04:03 ERROR: mysql错误：Table 'test.sales1' doesn't exist<br />SQL：select * from sales1;
+[TIME]: 2016-06-26 14:00:59 ERROR: mysql错误：Table 'test.salesempid' doesn't exist<br />SQL：select empid from salesempid=A
+[TIME]: 2016-06-26 14:01:52 ERROR: mysql错误：Unknown column 'A' in 'where clause'<br />SQL：select empid from sales where empid=A
+[TIME]: 2016-06-26 14:09:13 ERROR: Call to a member function all() on a non-objectD:\wamp\www\kuaixueapp\Admin\Controller\IndexController.class.php 第
+[TIME]: 2016-06-26 14:25:06 ERROR: 删除必须有where条件
+[TIME]: 2016-06-26 16:13:51 ERROR: D:/wamp/www/kuaixueapp/Admin/Tpl/Index/index.html模板文件不存在
